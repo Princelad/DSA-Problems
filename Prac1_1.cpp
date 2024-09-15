@@ -1,37 +1,62 @@
-#include <iostream>
+# include <iostream>
 
 using namespace std;
 
-void getPairs(int arr[], int s) {
-    int num, count = 0;
-    cin >> num;
-    int flag[s] = {0};
-
-    for(int i = 0;i < s; i++) {
-        for(int j = i+1; j < s; j++) {
-            if((arr[i] + arr[j]) % num == 0 && flag[i] == 0 && flag[j] == 0) {
-                printf("[%d, %d]\n", arr[i], arr[j]);
-                flag[i] = flag[j] = 1;
-            }
-        }
-    }
-}
+void getPairs(int arr[], int size, int key);
 
 int main() {
     int size;
-
+    cout << "Enter the size of the array :";
     cin >> size;
 
-    if(size % 2 == 0) {
+    if (size % 2 == 0) {
+
         int arr[size];
 
-        for(int i = 0; i < size; i++) {
+        cout << endl;
+        for (int i = 0; i < size; i++) {
+            cout << "Enter element no. " << (i + 1) << " :";
             cin >> arr[i];
         }
-        getPairs(arr, size);
-    } else {
-        return 1;
+
+        int key;
+
+        cout << "\nEnter the Key :";
+        cin >> key;
+
+        getPairs(arr, size, key);
     }
-    
+    else {
+        cout << "\nPairs cann't be formed." << endl;
+    }
+
     return 0;
+}
+
+void getPairs(int arr[], int size, int key) {
+    int flags[size];
+    int count;
+
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            if (flags[i] != 1 && flags[j] != 1 && i != j && (arr[i] + arr[j]) % key == 0) {
+                flags[i] = flags[j] = 1;
+                count++;
+            }
+        }
+    }
+
+    if (count == (size / 2)) {
+        cout << "\nPairs can be formed." << endl;
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (flags[i] != 1 && flags[j] != 1 && i != j && (arr[i] + arr[j]) % key == 0) {
+                    cout << '(' << arr[i] << ',' << arr[j] << ')' << endl;
+                }
+            }
+        }
+    }
+    else {
+        cout << "\nPairs cann't be formed." << endl;
+    }
 }
