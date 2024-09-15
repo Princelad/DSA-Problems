@@ -31,6 +31,5 @@ int main() {
 
     cout << "\nThe key is at the index " << linearSearch(arr, size, key) << " of the array.";
 
-
     return 0;
 }
