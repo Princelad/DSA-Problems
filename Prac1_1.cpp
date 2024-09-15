@@ -27,14 +27,14 @@ int main() {
         getPairs(arr, size, key);
     }
     else {
-        cout << "\nPairs cann't be formed." << endl;
+        cout << "\nPairs can't be formed." << endl;
     }
 
     return 0;
 }
 
 void getPairs(int arr[], int size, int key) {
-    int flags[size];
+    bool flags[size];
     int count;
 
     for (int i = 0; i < size; i++) {

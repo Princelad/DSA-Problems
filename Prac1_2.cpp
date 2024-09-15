@@ -1,28 +1,31 @@
 #include <iostream>
-#include <string>
 
 using namespace std;
 
-void getLengthoflargest(string str) {
-    int count = 0, res = 0;
-    
-    for(int i = 0; str[i] != '.'; i++) {
-        if(str[i] == ' ') {
-            res = max(res, count);
+void largestWordLength(const string& str) {
+    int maxLength = 0, count = 0;
+
+    for (char ch : str) {
+        if (isspace(ch)) {
+            maxLength = maxLength < count ? count : maxLength;
             count = 0;
-        } else {
+        }
+        else {
             count++;
         }
     }
 
-    cout << max(res, count);
+    maxLength = maxLength < count ? count : maxLength;
+
+    cout << "\nThe longest word's length of the string: " << maxLength << endl;
 }
 
 int main() {
     string str;
+    cout << "\nEnter the string :";
     getline(cin, str);
-    
-    getLengthoflargest(str);
+
+    largestWordLength(str);
 
     return 0;
 }
