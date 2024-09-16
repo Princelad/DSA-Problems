@@ -32,8 +32,6 @@ void bubbleSort(int arr[], int size) {
 }
 
 void selectionSort(int arr[], int size) {
-    int temp;
-    
     for(int i = 0; i < size; i++) {
         int minIndex = i;
         for(int j = minIndex + 1; j < size; j++) {
