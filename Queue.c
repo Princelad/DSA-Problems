@@ -6,11 +6,11 @@
 
 struct Node {
   int data;
-  struct Node *link;
-} *front, *rear;
+  struct Node* link;
+} *front, * rear;
 
 void enqueue(const int value) {
-  struct Node *ptr = malloc(sizeof(struct Node));
+  struct Node* ptr = malloc(sizeof(struct Node));
   if (ptr == NULL) {
     printf("\nMemory allocation failed.\n");
     return;
@@ -19,7 +19,8 @@ void enqueue(const int value) {
   ptr->link = NULL;
   if (rear != NULL) {
     rear->link = ptr;
-  } else {
+  }
+  else {
     front = ptr;
   }
   rear = ptr;
@@ -27,27 +28,29 @@ void enqueue(const int value) {
 
 void dequeue() {
   if (front != NULL) {
-    struct Node *ptr = front;
+    struct Node* ptr = front;
     printf("\nElement dequeued is: [%d]", front->data);
     front = front->link;
     if (front == NULL) {
       rear = NULL;
     }
     free(ptr);
-  } else {
+  }
+  else {
     printf("\nQueue is empty.");
   }
 }
 
 void displayQueue() {
   if (front != NULL) {
-    const struct Node *ptr = front;
+    const struct Node* ptr = front;
     printf("\nElements: ");
     while (ptr != NULL) {
       printf("[%d] ", ptr->data);
       ptr = ptr->link;
     }
-  } else {
+  }
+  else {
     printf("\nQueue is empty.");
   }
 }

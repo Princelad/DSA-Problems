@@ -6,17 +6,18 @@
 
 struct Node {
   int data;
-  struct Node *link;
+  struct Node* link;
 } *head;
 
 void addNode(int const data) {
-  struct Node *ptr = malloc(sizeof(struct Node));
+  struct Node* ptr = malloc(sizeof(struct Node));
   ptr->data = data;
   ptr->link = NULL;
   if (head == NULL) {
     head = ptr;
-  } else {
-    struct Node *temp = head;
+  }
+  else {
+    struct Node* temp = head;
     while (temp->link != NULL) {
       temp = temp->link;
     }
@@ -25,11 +26,12 @@ void addNode(int const data) {
 }
 
 void reverseList() {
-  if(head == NULL) {
+  if (head == NULL) {
     printf("The Linked List is empty");
-  } else {
-    struct Node *prev = NULL;
-    struct Node *curr = NULL;
+  }
+  else {
+    struct Node* prev = NULL;
+    struct Node* curr = NULL;
     while (head != NULL) {
       curr = head->link;
       head->link = prev;
@@ -43,8 +45,9 @@ void reverseList() {
 void display() {
   if (head == NULL) {
     printf("The Linked List is empty.");
-  } else {
-    const struct Node *temp = head;
+  }
+  else {
+    const struct Node* temp = head;
     printf("\nElements :");
     while (temp != NULL) {
       printf("[%d]", temp->data);

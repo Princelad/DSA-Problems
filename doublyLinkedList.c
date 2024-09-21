@@ -5,20 +5,21 @@
 #include <stdlib.h>
 
 struct Node {
-  struct Node *previous;
+  struct Node* previous;
   int data;
-  struct Node *next;
+  struct Node* next;
 } *head;
 
 void addNode(int const value) {
-  struct Node *ptr = malloc(sizeof(struct Node));
+  struct Node* ptr = malloc(sizeof(struct Node));
   ptr->data = value;
   ptr->next = ptr->previous = NULL;
 
   if (head == NULL) {
     head = ptr;
-  } else {
-    struct Node *temp = head;
+  }
+  else {
+    struct Node* temp = head;
 
     while (temp->next != NULL) {
       temp = temp->next;
@@ -32,24 +33,26 @@ void addNode(int const value) {
 void removeRearNode() {
   if (head == NULL) {
     printf("The Linked list is empty.");
-  } else {
-    struct Node *temp = head;
+  }
+  else {
+    struct Node* temp = head;
     while (temp->next != NULL) {
       temp = temp->next;
     }
-    struct Node *ptr = temp->previous;
+    struct Node* ptr = temp->previous;
     ptr->next = NULL;
     free(temp);
   }
 }
 
 void addFrontNode(int const value) {
-  struct Node *ptr = malloc(sizeof(struct Node));
+  struct Node* ptr = malloc(sizeof(struct Node));
   ptr->data = value;
   ptr->previous = ptr->next = NULL;
   if (head == NULL) {
     head = ptr;
-  } else {
+  }
+  else {
     head->previous = ptr;
     ptr->next = head;
     head = ptr;
@@ -59,8 +62,9 @@ void addFrontNode(int const value) {
 void removeFrontNode() {
   if (head == NULL) {
     printf("The Linked List is empty.");
-  } else {
-    struct Node *temp = head;
+  }
+  else {
+    struct Node* temp = head;
     head = head->next;
     head->previous = NULL;
     free(temp);
@@ -68,13 +72,14 @@ void removeFrontNode() {
 }
 
 void addNodeAt(int const index, int const value) {
-  struct Node *ptr = malloc(sizeof(struct Node));
+  struct Node* ptr = malloc(sizeof(struct Node));
   ptr->data = value;
   ptr->next = ptr->previous = NULL;
   if (head == NULL) {
     head = ptr;
-  } else {
-    struct Node *temp = head;
+  }
+  else {
+    struct Node* temp = head;
     for (int i = 0; i < index - 1; i++) {
       temp = temp->next;
     }
@@ -86,11 +91,12 @@ void addNodeAt(int const index, int const value) {
 }
 
 void removeNodeAt(int const index) {
-  if(head == NULL) {
+  if (head == NULL) {
     printf("The Linked List is empty.");
-  } else {
+  }
+  else {
     struct Node* ptr = head;
-    for(int i = 0; i < index - 2; i++) {
+    for (int i = 0; i < index - 2; i++) {
       ptr = ptr->next;
     }
     struct Node* temp = ptr->next;
@@ -103,8 +109,9 @@ void removeNodeAt(int const index) {
 void printList() {
   if (head == NULL) {
     printf("The Linked list is empty.");
-  } else {
-    const struct Node *temp = head;
+  }
+  else {
+    const struct Node* temp = head;
     printf("\nElements :");
     while (temp != NULL) {
       printf("[%d]", temp->data);

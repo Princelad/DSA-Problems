@@ -3,16 +3,17 @@
 
 struct Node {
   int data;
-  struct Node *link;
+  struct Node* link;
 } *head;
 
 void printLinkedlist() {
   if (head == NULL) {
     printf("List is empty.");
-  } else {
+  }
+  else {
 
     int count = 0;
-    const struct Node *temp = head;
+    const struct Node* temp = head;
 
     printf("Elements :");
 
@@ -27,14 +28,15 @@ void printLinkedlist() {
 }
 
 void addNode(int const value) {
-  struct Node *ptr = malloc(sizeof(struct Node));
+  struct Node* ptr = malloc(sizeof(struct Node));
   ptr->data = value;
   ptr->link = NULL;
 
   if (head == NULL) {
     head = ptr;
-  } else {
-    struct Node *temp = head;
+  }
+  else {
+    struct Node* temp = head;
     while (temp->link != NULL) {
       temp = temp->link;
     }
@@ -43,13 +45,14 @@ void addNode(int const value) {
 }
 
 void addNodeFront(int const value) {
-  struct Node *ptr = malloc(sizeof(struct Node));
+  struct Node* ptr = malloc(sizeof(struct Node));
   ptr->data = value;
   ptr->link = NULL;
 
   if (head == NULL) {
     head = ptr;
-  } else {
+  }
+  else {
     ptr->link = head;
     head = ptr;
   }
@@ -60,25 +63,27 @@ void removeNodeFront() {
 
   if (head == NULL) {
     printf("List is empty.");
-  } else {
-    struct Node *ptr = head;
+  }
+  else {
+    struct Node* ptr = head;
     head = head->link;
     free(ptr);
   }
 }
 
 void removeNodeRear() {
-  struct Node *ptr = head;
+  struct Node* ptr = head;
 
   printf("\nRemoving node @rear :\n");
 
   if (head == NULL) {
     printf("List is empty.");
-  } else {
+  }
+  else {
     while (ptr->link->link != NULL) {
       ptr = ptr->link;
     }
-    struct Node *temp = ptr->link;
+    struct Node* temp = ptr->link;
     free(temp);
     ptr->link = NULL;
   }
@@ -87,12 +92,13 @@ void removeNodeRear() {
 void addNodeAt(int const index, int const value) {
   if (head == NULL) {
     printf("List is empty.");
-  } else {
-    struct Node *ptr = head;
+  }
+  else {
+    struct Node* ptr = head;
     for (int i = 0; i < index - 2; i++) {
       ptr = ptr->link;
     }
-    struct Node *ptr2 = malloc(sizeof(struct Node));
+    struct Node* ptr2 = malloc(sizeof(struct Node));
     ptr2->data = value;
     ptr2->link = ptr->link;
     ptr->link = ptr2;
@@ -102,9 +108,10 @@ void addNodeAt(int const index, int const value) {
 void removeNodeAt(int const index) {
   if (head == NULL) {
     printf("List is empty.");
-  } else {
-    struct Node *ptr = head;
-    struct Node *ptr2 = head;
+  }
+  else {
+    struct Node* ptr = head;
+    struct Node* ptr2 = head;
     for (int i = 0; i < index - 1; i++) {
       ptr = ptr->link;
     }

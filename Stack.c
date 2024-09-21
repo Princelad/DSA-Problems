@@ -6,16 +6,17 @@
 
 struct Node {
   int data;
-  struct Node *next;
+  struct Node* next;
 } *top = NULL;
 
 void push(int const value) {
-  struct Node *newNode = malloc(sizeof(struct Node));
+  struct Node* newNode = malloc(sizeof(struct Node));
   newNode->data = value;
   newNode->next = NULL;
   if (top == NULL) {
     top = newNode;
-  } else {
+  }
+  else {
     newNode->next = top;
     top = newNode;
   }
@@ -24,8 +25,9 @@ void push(int const value) {
 void pop() {
   if (top == NULL) {
     printf("\nThe stack is empty.");
-  } else {
-    struct Node *temp = top;
+  }
+  else {
+    struct Node* temp = top;
     printf("The popped element : %d", top->data);
     top = temp->next;
     free(temp);
@@ -33,7 +35,7 @@ void pop() {
 }
 
 void display() {
-  const struct Node *temp = top;
+  const struct Node* temp = top;
   printf("\nElements :");
   while (temp != NULL) {
     printf("[%d]", temp->data);

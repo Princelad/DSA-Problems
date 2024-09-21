@@ -13,7 +13,8 @@ void addNode(int const data) {
     ptr->link = NULL;
     if (head == NULL) {
         head = ptr;
-    } else {
+    }
+    else {
         struct Node* temp = head;
         while (temp->link != NULL) {
             temp = temp->link;

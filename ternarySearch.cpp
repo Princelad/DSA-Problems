@@ -12,20 +12,20 @@ int ternarySearch(int arr[], int size) {
     left = 0;
     right = (size - 1);
 
-    while(left <= right) {
+    while (left <= right) {
         mid1 = left + (right - left) / 3;
         mid2 = right - (right - left) / 3;
 
-        if(arr[mid1] == key) {
+        if (arr[mid1] == key) {
             return mid1;
-        } 
-        else if(arr[mid2] == key) {
+        }
+        else if (arr[mid2] == key) {
             return mid2;
         }
-        else if(key < arr[mid1]) {
+        else if (key < arr[mid1]) {
             right = mid1 - 1;
         }
-        else if(key > arr[mid2]) {
+        else if (key > arr[mid2]) {
             left = mid2 + 1;
         }
         else {

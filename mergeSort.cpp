@@ -1,6 +1,6 @@
 #include <iostream>
 
-int *arr;
+int* arr;
 int size;
 
 void merge(const int left, const int mid, const int right) {
@@ -11,7 +11,8 @@ void merge(const int left, const int mid, const int right) {
     if (arr[i] <= arr[j]) {
       temp[L] = arr[i];
       i++;
-    } else {
+    }
+    else {
       temp[L] = arr[j];
       j++;
     }

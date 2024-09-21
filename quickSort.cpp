@@ -4,16 +4,16 @@
 #include <iostream>
 #include <algorithm>
 
-int *arr;
+int* arr;
 int size;
 
 int Partition(const int left, const int right) {
   const int pivot = arr[right];
   int store = left;
 
-  for(int j = left; j < right; j++) {
-    if(arr[j] <= pivot) {
-      std::swap(arr[j],arr[store]);
+  for (int j = left; j < right; j++) {
+    if (arr[j] <= pivot) {
+      std::swap(arr[j], arr[store]);
       store++;
     }
   }
@@ -25,7 +25,7 @@ int Partition(const int left, const int right) {
 void quickSort(const int left, const int right) {
   if (left < right) {
     const int mid = Partition(left, right);
-    quickSort(left, mid -1);
+    quickSort(left, mid - 1);
     quickSort(mid + 1, right);
   }
 }

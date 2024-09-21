@@ -34,10 +34,12 @@ int main() {
                     cout << "At index : [" << i << ',' << mid << ']' << endl;
                     found = true;
                     break;
-                } else if (arr[i][mid] > key) {
+                }
+                else if (arr[i][mid] > key) {
                     right = mid - 1;
-                } else {
-                    left = mid + 1; 
+                }
+                else {
+                    left = mid + 1;
                 }
             }
         }

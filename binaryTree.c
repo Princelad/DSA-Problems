@@ -4,36 +4,37 @@
 // Created by Prince on 13-09-2024.
 //
 struct Node {
-  struct Node *left;
+  struct Node* left;
   int data;
-  struct Node *right;
+  struct Node* right;
 };
 
 struct Queue {
-  struct Node *root;
-  struct Queue *next;
-} *front = NULL, *rear = NULL;
+  struct Node* root;
+  struct Queue* next;
+} *front = NULL, * rear = NULL;
 
-void enqueue(struct Node *root) {
-  struct Queue *q = malloc(sizeof(struct Queue));
+void enqueue(struct Node* root) {
+  struct Queue* q = malloc(sizeof(struct Queue));
   q->root = root;
   q->next = NULL;
   if (rear != NULL) {
     rear->next = q;
-  } else {
+  }
+  else {
     front = q;
   }
   rear = q;
 }
 
-struct Node *dequeue() {
+struct Node* dequeue() {
   if (front == NULL) {
     printf("\nQueue is empty.");
     return NULL;
   }
 
-  struct Node *temp = front->root;
-  struct Queue *toFree = front;
+  struct Node* temp = front->root;
+  struct Queue* toFree = front;
   front = front->next;
 
   if (front == NULL) {
@@ -45,53 +46,57 @@ struct Node *dequeue() {
   return temp;
 }
 
-struct Node *createNode(const int data) {
-  struct Node *node = malloc(sizeof(struct Node));
+struct Node* createNode(const int data) {
+  struct Node* node = malloc(sizeof(struct Node));
   node->data = data;
   node->left = NULL;
   node->right = NULL;
   return node;
 }
 
-void insertNode(struct Node **root, const int value) {
+void insertNode(struct Node** root, const int value) {
   int direction;
   if (*root == NULL) {
     *root = createNode(value);
-  } else {
+  }
+  else {
     printf("Left(1) or right(0) :");
     scanf("%d", &direction);
     if (direction) {
       insertNode(&(*root)->left, value);
-    } else {
+    }
+    else {
       insertNode(&(*root)->right, value);
     }
   }
 }
 
-void deleteNode(struct Node **root) {
+void deleteNode(struct Node** root) {
   if (*root == NULL) {
     printf("Node is empty.\n");
     return;
   }
 
   if ((*root)->left == NULL && (*root)->right == NULL) {
-    struct Node *temp = *root;
+    struct Node* temp = *root;
     *root = NULL;
     free(temp);
     printf("Leaf node deleted.\n");
-  } else {
+  }
+  else {
     int direction;
     printf("Left(1) or right(0): ");
     scanf("%d", &direction);
     if (direction) {
       deleteNode(&(*root)->left);
-    } else {
+    }
+    else {
       deleteNode(&(*root)->right);
     }
   }
 }
 
-void inOrder(const struct Node *root) {
+void inOrder(const struct Node* root) {
   if (root != NULL) {
     inOrder(root->left);
     printf("[%d]", root->data);
@@ -99,7 +104,7 @@ void inOrder(const struct Node *root) {
   }
 }
 
-void preOrder(const struct Node *root) {
+void preOrder(const struct Node* root) {
   if (root != NULL) {
     printf("[%d]", root->data);
     preOrder(root->left);
@@ -107,7 +112,7 @@ void preOrder(const struct Node *root) {
   }
 }
 
-void postOrder(const struct Node *root) {
+void postOrder(const struct Node* root) {
   if (root != NULL) {
     postOrder(root->left);
     postOrder(root->right);
@@ -115,13 +120,14 @@ void postOrder(const struct Node *root) {
   }
 }
 
-void levelOrder(struct Node *root) {
+void levelOrder(struct Node* root) {
   if (root == NULL) {
     printf("Empty Tree");
-  } else {
+  }
+  else {
     enqueue(root);
 
-    struct Node *node = NULL;
+    struct Node* node = NULL;
 
     while (front != NULL) {
       node = dequeue();
@@ -154,7 +160,7 @@ void mainMenu() {
 }
 
 int main() {
-  struct Node *root = NULL;
+  struct Node* root = NULL;
   int option, data;
 
   do {

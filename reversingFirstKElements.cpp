@@ -14,7 +14,7 @@ public:
     return q;
   }
 
-  void solve(queue<int> &q, const int k) {
+  void solve(queue<int>& q, const int k) {
     if (k == 0)
       return;
     const int e = q.front();

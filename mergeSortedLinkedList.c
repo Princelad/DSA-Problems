@@ -6,18 +6,19 @@
 
 struct Node {
   int data;
-  struct Node *link;
+  struct Node* link;
 };
 
-void addNode(struct Node **head, const int data) {
-  struct Node *newNode = malloc(sizeof(struct Node));
+void addNode(struct Node** head, const int data) {
+  struct Node* newNode = malloc(sizeof(struct Node));
   newNode->data = data;
   newNode->link = NULL;
 
   if (*head == NULL) {
     *head = newNode;
-  } else {
-    struct Node *temp = *head;
+  }
+  else {
+    struct Node* temp = *head;
     while (temp->link != NULL) {
       temp = temp->link;
     }
@@ -25,15 +26,16 @@ void addNode(struct Node **head, const int data) {
   }
 }
 
-struct Node *mergeSortedLinkedList(const struct Node *head1,
-                                   const struct Node *head2) {
-  struct Node *r = NULL;
+struct Node* mergeSortedLinkedList(const struct Node* head1,
+  const struct Node* head2) {
+  struct Node* r = NULL;
 
   while (head1 != NULL && head2 != NULL) {
     if (head1->data < head2->data) {
       addNode(&r, head1->data);
       head1 = head1->link;
-    } else {
+    }
+    else {
       addNode(&r, head2->data);
       head2 = head2->link;
     }
@@ -52,11 +54,12 @@ struct Node *mergeSortedLinkedList(const struct Node *head1,
   return r;
 }
 
-void display(const struct Node *head) {
+void display(const struct Node* head) {
   if (head == NULL) {
     printf("List is empty\n");
-  } else {
-    const struct Node *temp = head;
+  }
+  else {
+    const struct Node* temp = head;
     while (temp != NULL) {
       printf("[%d] ", temp->data);
       temp = temp->link;
@@ -66,8 +69,8 @@ void display(const struct Node *head) {
 }
 
 int main() {
-  struct Node *head1 = NULL;
-  struct Node *head2 = NULL;
+  struct Node* head1 = NULL;
+  struct Node* head2 = NULL;
 
   int size, data;
 
@@ -87,7 +90,7 @@ int main() {
     addNode(&head2, data);
   }
 
-  const struct Node *mergedHead = mergeSortedLinkedList(head1, head2);
+  const struct Node* mergedHead = mergeSortedLinkedList(head1, head2);
 
   printf("\nThe merged Linked List is: ");
   display(mergedHead);

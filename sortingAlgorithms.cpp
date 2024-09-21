@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void printArr(int arr[],int size) {
+void printArr(int arr[], int size) {
     cout << endl;
     for(int i = 0; i < size; i++) {
         cout << arr[i] << " ";
@@ -40,19 +40,17 @@ void selectionSort(int arr[], int size) {
             }
         }
         if(minIndex != i) {
-            swap(arr[minIndex],arr[i]);
+            swap(arr[minIndex], arr[i]);
         }
     }
     
     printArr(arr, size);
-
 }
 
 void insertionSort(int arr[], int size) {
-    int key, j;
     for(int i = 1; i < size; i++) {
-        key = arr[i];
-        j = i - 1;
+        int key = arr[i];
+        int j = i - 1;
         while(j >= 0 && arr[j] > key) {
             arr[j + 1] = arr[j];
             j--;
@@ -64,23 +62,21 @@ void insertionSort(int arr[], int size) {
 }
 
 void countSort(int arr[], int size) {
-    int maxNumber;
-    cin >> maxNumber;
+    int maxNumber = *max_element(arr, arr + size);
     int result[size] = {0};
-
-    int arr2[maxNumber + 1] = {0};
+    int count[maxNumber + 1] = {0};
 
     for(int i = 0; i < size; i++) {
-        arr2[arr[i]]++;
+        count[arr[i]]++;
     }
 
     for(int i = 1; i <= maxNumber; i++) {
-        arr2[i] += arr2[i-1];
+        count[i] += count[i-1];
     }
 
     for(int i = size - 1; i >= 0; i--) {
-        result[arr2[arr[i]] - 1] = arr[i];
-        arr2[arr[i]]--;
+        result[count[arr[i]] - 1] = arr[i];
+        count[arr[i]]--;
     }
 
     for(int i = 0; i < size; i++) {
@@ -118,7 +114,7 @@ void radixSort(int arr[], int size) {
 int main() {
     int size;
 
-    cout << "\nEnter the size of the array : ";
+    cout << "\nEnter the size of the array: ";
     cin >> size;
 
     int arr[size];
