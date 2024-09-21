@@ -176,9 +176,6 @@ int main() {
       for (int i = 0; i < size; i++) {
         printf("Enter the element #%d : ", (i + 1));
         scanf("%d", &data[i]);
-      }
-
-      for (int i = 0; i < size; i++) {
         insertNode(&root, data[i]);
       }
 
