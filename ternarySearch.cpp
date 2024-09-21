@@ -1,9 +1,11 @@
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
 int ternarySearch(int arr[], int size) {
     int key;
+    cout << "\nEnter the key : ";
     cin >> key;
     int right, left, mid1, mid2;
 
@@ -11,8 +13,8 @@ int ternarySearch(int arr[], int size) {
     right = (size - 1);
 
     while(left <= right) {
-        mid2 = (left+(right - left))/3;
-        mid1 = (right+(left - right))/3;
+        mid1 = left + (right - left) / 3;
+        mid2 = right - (right - left) / 3;
 
         if(arr[mid1] == key) {
             return mid1;
@@ -20,43 +22,42 @@ int ternarySearch(int arr[], int size) {
         else if(arr[mid2] == key) {
             return mid2;
         }
-        else if(arr[mid1] > key) {
+        else if(key < arr[mid1]) {
             right = mid1 - 1;
         }
-        else if(arr[mid1] < key && arr[mid2] > key) {
+        else if(key > arr[mid2]) {
+            left = mid2 + 1;
+        }
+        else {
             left = mid1 + 1;
             right = mid2 - 1;
         }
-        else{
-            left =  mid1 + 1;
-        }
     }
+    return -1; // Key not found
 }
 
 int main() {
     int size;
+    cout << "Enter the size of the array : ";
     cin >> size;
 
     int arr[size];
 
     for (int i = 0; i < size; i++) {
+        cout << "Enter the element no #" << (i + 1) << " : ";
         cin >> arr[i];
     }
 
     int temp;
 
-    for (int i = 0; i < size; i++) {
-        for (int j = i + 1; j < size; j++) {
-            if (arr[i] > arr[j]) {
-                temp = arr[j];
-                arr[j] = arr[i];
-                arr[i] = temp;
-            }
-        }
+    sort(arr, arr + size);
+
+    cout << "Sorted Array : ";
+    for (int i : arr) {
+        cout << '[' << i << ']';
     }
 
-    cout << ternarySearch(arr, size);
+    cout << "At index position : " << ternarySearch(arr, size);
 
-    
     return 0;
 }
