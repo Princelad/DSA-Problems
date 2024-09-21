@@ -161,7 +161,7 @@ void mainMenu() {
 
 int main() {
   struct Node* root = NULL;
-  int option, data;
+  int option, size;
 
   do {
     mainMenu();
@@ -169,9 +169,19 @@ int main() {
 
     switch (option) {
     case 1: {
-      printf("\nEnter value to insert: ");
-      scanf("%d", &data);
-      insertNode(&root, data);
+      printf("\nEnter the number of elements : ");
+      scanf("%d", &size);
+
+      int data[size];
+      for (int i = 0; i < size; i++) {
+        printf("Enter the element #%d : ", (i + 1));
+        scanf("%d", &data[i]);
+      }
+
+      for (int i = 0; i < size; i++) {
+        insertNode(&root, data[i]);
+      }
+
       break;
     }
     case 2: {
