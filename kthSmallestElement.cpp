@@ -29,22 +29,23 @@ void insertNode(struct Node** root, int value) {
     }
 }
 
-void inOrder(struct Node* root, vector<int>* result) {
-    if (root != NULL) {
-        inOrder(root->left, &(*result));
+void inOrder(struct Node* root, vector<int>* result, int key) {
+    if (root != NULL && --key) {
+        inOrder(root->left, &(*result), key);
         (*result).push_back(root->data);
-        inOrder(root->right, &(*result));
+        inOrder(root->right, &(*result), key);
     }
 }
 
 int kthSmallestElement(struct Node* root) {
     vector<int> result;
-    inOrder(root, &result);
-
+    
     int key;
     cout << "Enter the value for k : ";
     cin >> key;
     key--;
+    
+    inOrder(root, &result, key);
 
     return result[key];
 }
